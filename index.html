@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo-List-App</title>
     <link rel="stylesheet" href="/Todo-List-App/style.css">
+
     <script src="/Todo-List-App/app.js"></script>
 
     <!-- Font Style -->
@@ -20,8 +21,8 @@
     <div class="main-container">
         <div class="header-container">
             <div class="title-container">
-                <h3 class="app-title">Today's Task</h3>
-                <span class="date-today">Friday, 13 January</span>
+                <h3 id="app-title" class="app-title">Today's Task</h3>
+                <div id="date-today" class="date-today">Hello</div>
             </div>
             <div class="add-container">
                 <a class="new-task-btn" href="#"><i class="fa-regular fa-plus"></i>New Task</a>
@@ -29,19 +30,19 @@
 
         </div>
         <div class="main-task-container">
-            <input type="checkbox">
+            <input class="textbox-input" type="checkbox">
             <div class="task-container">
                 <h4 class="task-title">Today's Task</h4>
                 <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae inventore
                     quibusdam deserunt reiciendis ipsum assumenda, labore deleniti voluptatem tempora laboriosam.</p>
                 <div class="date-container">
-                    <img src="#" alt="">
+                    <i class="fa-solid fa-calendar-days"></i>
                     <p>Friday, 13 January</p>
                 </div>
             </div>
             <div class="edit-delete-btn">
-                <a class="edit-btn" href="#"><img src="#" alt="">edit</a>
-                <a class="delete-btn" href="#"><img src="#" alt="">delete</a>
+                <a class="edit-btn" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a class="delete-btn" href="#"><i class="fa-solid fa-trash"></i></a>
             </div>
         </div>
 

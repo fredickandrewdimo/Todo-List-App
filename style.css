@@ -85,6 +85,7 @@ body {
     display: flex;
 }
 
+
 .task-container {
     margin: 0 0 0 10px
 }
@@ -96,13 +97,23 @@ body {
 }
 
 .description {
-    width: 85%;
+    width: 90%;
     font-size: 1.4rem;
     line-height: 1.7rem;
     color: var(--secondary-text);
+    margin: 0 0 15px 0;
 }
 
-.date-container img {}
+.date-container {
+    display: flex;
+    align-items: center;
+}
+
+.date-container i {
+    font-size: 1.6rem;
+    margin: 0 8px 0 0;
+    color: var(--tertiary-accent);
+}
 
 .date-container p {
     font-size: 1.2rem;
@@ -113,6 +124,24 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.edit-btn {
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--secondary-accent);
+    margin: 0 10px 0 0;
+    color: var(--primary-accent);
+}
+
+.delete-btn {
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--quaternary-accent);
+    margin: 0 10px 0 0;
+    color: var(--tertiary-accent);
 }
 
 
