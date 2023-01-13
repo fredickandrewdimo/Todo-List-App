@@ -1,0 +1,139 @@
+:root {
+    --primary-text: #010101;
+    --secondary-text: #898989;
+    --primary-accent: #0860FB;
+    --secondary-accent: #E2EBFA;
+    --tertiary-accent: #B23B3F;
+    --quaternary-accent: #FFE7E7;
+    --primary-body: #898989;
+    --primary-border: #D9D9D9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    /* 1rem = 10px */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    background-color: var(--secondary-accent);
+}
+
+.main-container {
+    background-color: white;
+    width: 60vw;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+/* Header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid var(--primary-border);
+    margin: 0 0 20px 0;
+}
+
+.add-container {
+    display: flex;
+    align-items: center;
+}
+
+.new-task-btn {
+    background-color: var(--secondary-accent);
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--primary-accent);
+}
+
+.new-task-btn i {
+    margin-right: 10px;
+    font-size: 1.6rem;
+}
+
+.app-title {
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    color: var(--primary-text);
+}
+
+.date-today {
+    font-size: 1.6rem;
+    margin: 0 0 10px 0;
+    color: var(--secondary-text);
+}
+
+/*  Main Task List */
+.main-task-container {
+    display: flex;
+}
+
+.task-container {
+    margin: 0 0 0 10px
+}
+
+.task-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+}
+
+.description {
+    width: 85%;
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    color: var(--secondary-text);
+}
+
+.date-container img {}
+
+.date-container p {
+    font-size: 1.2rem;
+    color: var(--secondary-text);
+}
+
+.edit-delete-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+/* Media query for desktop devices */
+/* @media (min-width: 992px) {
+    .main-container {
+        width: 60vw;
+    }
+} */
+
+/* Media query for tablet devices */
+@media (min-width: 768px) and (max-width: 991px) {
+    .main-container {
+        width: 70vw;
+    }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 767px) {
+    .main-container {
+        width: 80vw;
+    }
+}
