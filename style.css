@@ -32,6 +32,7 @@ body {
 }
 
 .main-container {
+    margin: 40px 0 0 0;
     background-color: white;
     width: 60vw;
     padding: 30px;
@@ -62,6 +63,13 @@ body {
     color: var(--primary-accent);
 }
 
+.new-task-btn:hover {
+    cursor: pointer;
+    background-color: var(--primary-accent);
+    color: var(--secondary-accent);
+}
+
+
 .new-task-btn i {
     margin-right: 10px;
     font-size: 1.6rem;
@@ -83,11 +91,12 @@ body {
 /*  Main Task List */
 .main-task-container {
     display: flex;
+    border-bottom: 1px solid var(--primary-border);
 }
 
 
 .task-container {
-    margin: 0 0 0 10px
+    margin: 0 0 0 20px
 }
 
 .task-title {
@@ -97,11 +106,18 @@ body {
 }
 
 .description {
-    width: 90%;
+    width: 100%;
     font-size: 1.4rem;
     line-height: 1.7rem;
     color: var(--secondary-text);
     margin: 0 0 15px 0;
+}
+
+.details-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 20px 0;
 }
 
 .date-container {
@@ -120,14 +136,8 @@ body {
     color: var(--secondary-text);
 }
 
-.edit-delete-btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .edit-btn {
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 10px;
     border-radius: 5px;
     background-color: var(--secondary-accent);
@@ -135,14 +145,106 @@ body {
     color: var(--primary-accent);
 }
 
+.edit-btn:hover {
+    color: var(--secondary-accent);
+    background-color: var(--primary-accent);
+    cursor: pointer;
+}
+
 .delete-btn {
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 10px;
     border-radius: 5px;
     background-color: var(--quaternary-accent);
     margin: 0 10px 0 0;
     color: var(--tertiary-accent);
 }
+
+.delete-btn:hover {
+    color: var(--quaternary-accent);
+    background-color: var(--tertiary-accent);
+    cursor: pointer;
+}
+
+/* Modal */
+
+.modal-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    margin: 40px 0 0 0;
+    background-color: white;
+    width: 60vw;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.modal-input {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 20px 0;
+}
+
+.title-input {
+    margin: 0 0 15px 0;
+    height: 24px;
+    padding: 10px;
+    border: 1px solid var(--secondary-text);
+    border-radius: 5px;
+}
+
+.description-input {
+    margin: 0 0 15px 0;
+    height: 48px;
+    padding: 10px;
+    border: 1px solid var(--secondary-text);
+    border-radius: 5px;
+}
+
+.modal-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cancel-btn {
+    font-size: 1.4rem;
+    padding: 10px;
+    margin: 0 10px 0 0;
+    border-radius: 5px;
+    color: var(--secondary-text);
+}
+
+.cancel-btn:hover {
+    cursor: pointer;
+}
+
+.add-task-btn {
+    font-size: 1.4rem;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--secondary-accent);
+    background-color: var(--primary-accent);
+}
+
+.add-task-btn:hover {
+    cursor: pointer;
+}
+
+
+
+
 
 
 
@@ -158,11 +260,19 @@ body {
     .main-container {
         width: 70vw;
     }
+
+    .modal-content {
+        width: 70vw;
+    }
 }
 
 /* Media query for mobile devices */
 @media (max-width: 767px) {
     .main-container {
+        width: 80vw;
+    }
+
+    .modal-content {
         width: 80vw;
     }
 }
