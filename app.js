@@ -1,3 +1,5 @@
+// Live date on the Header
+
 document.addEventListener("DOMContentLoaded", function () {
   function dateToday() {
     const today = new Date();
@@ -34,3 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   dateToday();
 });
+
+// Modal Function
+
+window.onload = function () {
+  const newTaskBtn = document.getElementById("new-task-btn");
+  const modalContainer = document.getElementById("modal-container");
+
+  newTaskBtn.addEventListener("click", function () {
+    modalContainer.style.display = "block";
+  });
+};

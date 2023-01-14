@@ -169,6 +169,7 @@ body {
 /* Modal */
 
 .modal-container {
+    display: none;
     position: fixed;
     left: 0;
     top: 0;
@@ -185,7 +186,7 @@ body {
     background-color: white;
     margin: 40px 0 0 0;
     background-color: white;
-    width: 60vw;
+    width: 50vw;
     padding: 25px;
     border-radius: 10px;
 }
@@ -208,7 +209,7 @@ body {
 
 .description-input {
     margin: 0 0 15px 0;
-    height: 56px;
+    height: 64px;
     padding: 10px;
     border: 1px solid var(--primary-border);
     border-radius: 5px;
@@ -246,6 +247,7 @@ body {
     border: 1px solid var(--primary-accent);
     cursor: pointer;
 }
+
 
 .due-date-btn::-webkit-calendar-picker-indicator {
     width: 20px;
@@ -307,7 +309,7 @@ body {
     }
 
     .modal-content {
-        width: 70vw;
+        width: 60vw;
     }
 }
 
@@ -318,6 +320,6 @@ body {
     }
 
     .modal-content {
-        width: 80vw;
+        width: 85vw;
     }
 }
