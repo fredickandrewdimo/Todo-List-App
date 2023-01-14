@@ -186,7 +186,7 @@ body {
     margin: 40px 0 0 0;
     background-color: white;
     width: 60vw;
-    padding: 20px;
+    padding: 25px;
     border-radius: 10px;
 }
 
@@ -200,22 +200,66 @@ body {
     margin: 0 0 15px 0;
     height: 24px;
     padding: 10px;
-    border: 1px solid var(--secondary-text);
+    border: 1px solid var(--primary-border);
     border-radius: 5px;
+    font-size: 1.5rem;
+    color: var(--primary-text);
 }
 
 .description-input {
     margin: 0 0 15px 0;
-    height: 48px;
+    height: 56px;
     padding: 10px;
-    border: 1px solid var(--secondary-text);
+    border: 1px solid var(--primary-border);
     border-radius: 5px;
+    font-size: 1.5rem;
+    color: var(--primary-text);
+    resize: none;
 }
 
 .modal-details {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.due-date-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--primary-border);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.due-date-container label {
+    font-size: 1.2rem;
+    margin: 0 5px 0 0;
+    color: var(--primary-text);
+}
+
+
+.due-date-container label:hover {
+    cursor: pointer;
+}
+
+.due-date-container:hover {
+    border: 1px solid var(--primary-accent);
+    cursor: pointer;
+}
+
+.due-date-btn::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px 0 0;
+    border: none;
+}
+
+.due-date-btn::-webkit-calendar-picker-indicator:hover {
+    cursor: pointer;
+}
+
+.due-date-btn::-webkit-datetime-edit {
+    display: none;
 }
 
 .cancel-btn {
@@ -236,6 +280,7 @@ body {
     border-radius: 5px;
     color: var(--secondary-accent);
     background-color: var(--primary-accent);
+    font-weight: bold;
 }
 
 .add-task-btn:hover {
