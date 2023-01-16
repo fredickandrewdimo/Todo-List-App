@@ -56,13 +56,14 @@ function modal() {
 }
 modal();
 
-// Make an object that store the todos
+// Make an object that stores the todos
 let todos = [
-  {
-    title: "Task1",
-    description: "The handsome codeer",
-    dueDate: "Monday, 13 January",
-  },
+  //   {
+  //     title: "Task1",
+  //     description: "The handsome codeer",
+  //     dueDate: "Monday, 13 January",
+  //     id: "id1",
+  //   },
 ];
 
 // Make a function that push the new todo
@@ -79,11 +80,14 @@ function addTodo() {
   const dueDateInput = document.getElementById("due-date-input");
   const dueDate = dueDateInput.value;
 
+  //   Creates a random ids using getTime()
+  const id = "" + new Date().getTime();
   //   added the object of todo
   todos.push({
     title: title,
     description: description,
     dueDate: dueDate,
+    id: id,
   });
 
   // Clear input values after submission
@@ -97,24 +101,22 @@ function addTodo() {
 
 // Make a function that renders the list
 function renderTodo() {
-  const mainContainer = document.getElementById("main-container");
-  mainContainer.innerHTML = "";
+  const mainListContainer = document.getElementById("main-list-container");
+  mainListContainer.innerHTML = "";
 
   todos.forEach(function (todo) {
-    const mainContainer = document.getElementById("main-container");
-
-    const mainTaskContainer = document.createElement("div");
-    mainTaskContainer.classList.add("main-task-container");
-    mainContainer.appendChild(mainTaskContainer);
+    const innerMainTaskContainer = document.createElement("div");
+    innerMainTaskContainer.classList.add("main-task-container");
+    mainListContainer.appendChild(innerMainTaskContainer);
 
     const textboxInput = document.createElement("input");
     textboxInput.setAttribute("type", "checkbox");
     textboxInput.classList.add("textbox-input");
-    mainTaskContainer.appendChild(textboxInput);
+    innerMainTaskContainer.appendChild(textboxInput);
 
     const taskContainer = document.createElement("div");
     taskContainer.classList.add("task-container");
-    mainTaskContainer.appendChild(taskContainer);
+    innerMainTaskContainer.appendChild(taskContainer);
 
     const taskTitle = document.createElement("h4");
     taskTitle.classList.add("task-title");
@@ -147,20 +149,26 @@ function renderTodo() {
     deleteEditBtnContainer.classList.add("edit-delete-btn");
     detailsContainer.appendChild(deleteEditBtnContainer);
 
+    // Edit button
     const editBtn = document.createElement("button");
     editBtn.classList.add("edit-btn");
     deleteEditBtnContainer.appendChild(editBtn);
+    editBtn.id = todo.id;
 
     const editBtnIcon = document.createElement("i");
     editBtnIcon.classList.add("fa-solid", "fa-pen-to-square");
     editBtn.appendChild(editBtnIcon);
 
+    // Delete button
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
     deleteEditBtnContainer.appendChild(deleteBtn);
+    deleteBtn.id = todo.id;
 
     const deleteBtnIcon = document.createElement("i");
     deleteBtnIcon.classList.add("fa-solid", "fa-trash");
     deleteBtn.appendChild(deleteBtnIcon);
   });
 }
+
+renderTodo();
