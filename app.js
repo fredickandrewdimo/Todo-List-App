@@ -44,8 +44,13 @@ function modal() {
   });
 
   const cancelBtn = document.getElementById("cancel-btn");
-
   cancelBtn.addEventListener("click", function () {
+    modalContainer.style.display = "none";
+  });
+
+  const addTaskBtn = document.getElementById("add-task-btn");
+  addTaskBtn.addEventListener("click", function () {
+    addTodo();
     modalContainer.style.display = "none";
   });
 }
@@ -60,71 +65,102 @@ let todos = [
   },
 ];
 
+// Make a function that push the new todo
+function addTodo() {
+  // Get the value to title
+  const titleInput = document.getElementById("title-input");
+  const title = titleInput.value;
+
+  // Get the value of description
+  const descriptionInput = document.getElementById("description-input");
+  const description = descriptionInput.value;
+
+  // Get the value of date picker
+  const dueDateInput = document.getElementById("due-date-input");
+  const dueDate = dueDateInput.value;
+
+  //   added the object of todo
+  todos.push({
+    title: title,
+    description: description,
+    dueDate: dueDate,
+  });
+
+  // Clear input values after submission
+  titleInput.value = "";
+  descriptionInput.value = "";
+  dueDateInput.value = "";
+
+  //   run render todo function to scope the variable
+  renderTodo();
+}
+
 // Make a function that renders the list
 function renderTodo() {
   const mainContainer = document.getElementById("main-container");
+  mainContainer.innerHTML = "";
 
-  const mainTaskContainer = document.createElement("div");
-  mainTaskContainer.classList.add("main-task-container");
-  mainContainer.appendChild(mainTaskContainer);
+  todos.forEach(function (todo) {
+    const mainContainer = document.getElementById("main-container");
 
-  const textboxInput = document.createElement("input");
-  textboxInput.setAttribute("type", "checkbox");
-  textboxInput.classList.add("textbox-input");
-  mainTaskContainer.appendChild(textboxInput);
+    const mainTaskContainer = document.createElement("div");
+    mainTaskContainer.classList.add("main-task-container");
+    mainContainer.appendChild(mainTaskContainer);
 
-  const taskContainer = document.createElement("div");
-  taskContainer.classList.add("task-container");
-  mainTaskContainer.appendChild(taskContainer);
+    const textboxInput = document.createElement("input");
+    textboxInput.setAttribute("type", "checkbox");
+    textboxInput.classList.add("textbox-input");
+    mainTaskContainer.appendChild(textboxInput);
 
-  const taskTitle = document.createElement("h4");
-  taskTitle.classList.add("task-title");
-  taskTitle.innerText = `Today's Task`;
-  taskContainer.appendChild(taskTitle);
+    const taskContainer = document.createElement("div");
+    taskContainer.classList.add("task-container");
+    mainTaskContainer.appendChild(taskContainer);
 
-  const description = document.createElement("p");
-  description.classList.add("description");
-  description.innerText =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae inventore quibusdam deserunt reiciendis ipsum assumenda, labore deleniti voluptatem tempora laboriosam.";
-  taskContainer.appendChild(description);
+    const taskTitle = document.createElement("h4");
+    taskTitle.classList.add("task-title");
+    taskTitle.innerText = todo.title;
+    taskContainer.appendChild(taskTitle);
 
-  const detailsContainer = document.createElement("div");
-  detailsContainer.classList.add("details-container");
-  taskContainer.appendChild(detailsContainer);
+    const descriptionEl = document.createElement("p");
+    descriptionEl.classList.add("description");
+    descriptionEl.innerText = todo.description;
+    taskContainer.appendChild(descriptionEl);
 
-  const dateContainer = document.createElement("div");
-  dateContainer.classList.add("date-container");
-  detailsContainer.appendChild(dateContainer);
+    const detailsContainer = document.createElement("div");
+    detailsContainer.classList.add("details-container");
+    taskContainer.appendChild(detailsContainer);
 
-  const dueDateIcon = document.createElement("i");
-  dueDateIcon.classList.add("fa-solid", "fa-calendar-days", "due-date-icon");
-  dateContainer.appendChild(dueDateIcon);
+    const dateContainer = document.createElement("div");
+    dateContainer.classList.add("date-container");
+    detailsContainer.appendChild(dateContainer);
 
-  const dueDate = document.createElement("p");
-  dueDate.classList.add("due-date");
-  dueDate.innerText = "Friday, 13 January";
-  dateContainer.appendChild(dueDate);
+    const dueDateIcon = document.createElement("i");
+    dueDateIcon.classList.add("fa-solid", "fa-calendar-days", "due-date-icon");
+    dateContainer.appendChild(dueDateIcon);
 
-  const deleteEditBtnContainer = document.createElement("div");
-  deleteEditBtnContainer.classList.add("edit-delete-btn");
-  detailsContainer.appendChild(deleteEditBtnContainer);
+    const dueDateEl = document.createElement("p");
+    dueDateEl.classList.add("due-date");
+    dueDateEl.innerText = todo.dueDate;
+    dateContainer.appendChild(dueDateEl);
 
-  const editBtn = document.createElement("button");
-  editBtn.classList.add("edit-btn");
-  deleteEditBtnContainer.appendChild(editBtn);
+    const deleteEditBtnContainer = document.createElement("div");
+    deleteEditBtnContainer.classList.add("edit-delete-btn");
+    detailsContainer.appendChild(deleteEditBtnContainer);
 
-  const editBtnIcon = document.createElement("i");
-  editBtnIcon.classList.add("fa-solid", "fa-pen-to-square");
-  editBtn.appendChild(editBtnIcon);
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("edit-btn");
+    deleteEditBtnContainer.appendChild(editBtn);
 
-  const deleteBtn = document.createElement("button");
-  deleteBtn.classList.add("delete-btn");
-  deleteEditBtnContainer.appendChild(deleteBtn);
+    const editBtnIcon = document.createElement("i");
+    editBtnIcon.classList.add("fa-solid", "fa-pen-to-square");
+    editBtn.appendChild(editBtnIcon);
 
-  const deleteBtnIcon = document.createElement("i");
-  deleteBtnIcon.classList.add("fa-solid", "fa-trash");
-  deleteBtn.appendChild(deleteBtnIcon);
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-btn");
+    deleteEditBtnContainer.appendChild(deleteBtn);
+
+    const deleteBtnIcon = document.createElement("i");
+    deleteBtnIcon.classList.add("fa-solid", "fa-trash");
+    deleteBtn.appendChild(deleteBtnIcon);
+  });
 }
-renderTodo();
-
-// Make a function that push the new todo
