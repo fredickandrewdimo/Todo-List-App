@@ -174,6 +174,7 @@ function renderTodo() {
 
 renderTodo();
 
+// Remove Todo Function
 function removeTodo() {
   const deleteBtn = document.getElementsByClassName("delete-btn");
 

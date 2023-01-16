@@ -287,6 +287,7 @@ body {
 .add-task-btn {
     font-size: 1.4rem;
     padding: 10px;
+    margin: 0 10px 0 0;
     border-radius: 5px;
     color: var(--secondary-accent);
     background-color: var(--primary-accent);
@@ -297,9 +298,20 @@ body {
     cursor: pointer;
 }
 
+.save-changes-btn {
+    font-size: 1.4rem;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--secondary-accent);
+    background-color: var(--primary-accent);
+    font-weight: bold;
+}
 
+.save-changes-btn:hover {
+    cursor: pointer;
+}
 
-
+/* Modal of editing */
 
 
 
