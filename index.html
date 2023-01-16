@@ -8,7 +8,7 @@
     <title>Todo-List-App</title>
     <link rel="stylesheet" href="/Todo-List-App/style.css">
 
-    <script src="/Todo-List-App/app.js"></script>
+    <script defer src="/Todo-List-App/app.js"></script>
 
     <!-- Font Style -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <div class="main-container">
+    <div class="main-container" id="main-container">
         <div class="header-container">
             <div class="title-container">
                 <h3 id="app-title" class="app-title">Today's Task</h3>
@@ -30,7 +30,7 @@
             </div>
 
         </div>
-        <div class="main-task-container">
+        <div class="main-task-container" id="main-task-container">
             <input class="textbox-input" type="checkbox">
             <div class="task-container">
                 <h4 class="task-title">Today's Task</h4>
