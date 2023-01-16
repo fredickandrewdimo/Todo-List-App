@@ -164,6 +164,7 @@ function renderTodo() {
     deleteBtn.classList.add("delete-btn");
     deleteEditBtnContainer.appendChild(deleteBtn);
     deleteBtn.id = todo.id;
+    deleteBtn.onclick = removeTodo;
 
     const deleteBtnIcon = document.createElement("i");
     deleteBtnIcon.classList.add("fa-solid", "fa-trash");
@@ -172,3 +173,20 @@ function renderTodo() {
 }
 
 renderTodo();
+
+function removeTodo() {
+  const deleteBtn = document.getElementsByClassName("delete-btn");
+
+  for (let i = 0; i < deleteBtn.length; i++) {
+    deleteBtn[i].addEventListener("click", function () {
+      const id = this.id;
+      for (let i = 0; i < todos.length; i++) {
+        if (todos[i].id === id) {
+          todos.splice(i, 1);
+          break;
+        }
+      }
+      renderTodo();
+    });
+  }
+}

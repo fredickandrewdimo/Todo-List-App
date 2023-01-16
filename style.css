@@ -89,10 +89,13 @@ body {
 }
 
 /*  Main Task List */
+/* .main-list-container{
+
+} */
+
 .main-task-container {
     margin-top: 20px;
     display: flex;
-    width: 100%;
 }
 
 
