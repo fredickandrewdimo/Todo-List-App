@@ -90,6 +90,7 @@ body {
 
 /*  Main Task List */
 .main-task-container {
+    margin-top: 20px;
     display: flex;
     border-bottom: 1px solid var(--primary-border);
 }
@@ -125,7 +126,7 @@ body {
     align-items: center;
 }
 
-.date-container i {
+.date-container .due-date-icon {
     font-size: 1.6rem;
     margin: 0 8px 0 0;
     color: var(--tertiary-accent);
