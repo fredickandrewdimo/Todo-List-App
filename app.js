@@ -34,10 +34,12 @@ function dateToday() {
 }
 dateToday();
 
-// Modal Function
-function modal() {
+// Create Todo
+
+let modalContainer = document.getElementById("modal-container");
+
+function createTodo() {
   const newTaskBtn = document.getElementById("new-task-btn");
-  const modalContainer = document.getElementById("modal-container");
 
   newTaskBtn.addEventListener("click", function () {
     modalContainer.style.display = "block";
@@ -49,12 +51,53 @@ function modal() {
   });
 
   const addTaskBtn = document.getElementById("add-task-btn");
-  addTaskBtn.addEventListener("click", function () {
+  addTaskBtn.addEventListener("click", function (event) {
     addTodo();
     modalContainer.style.display = "none";
+    event.stopPropagation();
   });
+
+  const saveChangesBtn = document.getElementById("save-changes-btn");
+  saveChangesBtn.style.display = "none";
 }
-modal();
+createTodo();
+
+// Edit Todo
+function editTodo(todo) {
+  currentTodo = todo;
+
+  modalContainer.style.display = "block";
+
+  const saveChangesBtn = document.getElementById("save-changes-btn");
+  saveChangesBtn.style.display = "inline";
+
+  const addTaskBtn = document.getElementById("add-task-btn");
+  addTaskBtn.style.display = "none";
+
+  document.getElementById("title-input").value = todo.title;
+  document.getElementById("description-input").value = todo.description;
+  document.getElementById("due-date-input").value = todo.dueDate;
+
+  saveChangesBtn.addEventListener("click", function () {
+    currentTodo.title = document.getElementById("title-input").value;
+    currentTodo.description =
+      document.getElementById("description-input").value;
+    currentTodo.dueDate = document.getElementById("due-date-input").value;
+
+    // Find the index of the existing todo in the "todos" array
+    let index = todos.findIndex((todo) => todo.id === currentTodo.id);
+
+    // Replace the existing todo with the new edited todo
+    todos[index] = currentTodo;
+
+    modalContainer.style.display = "none";
+    renderTodo();
+  });
+
+  renderTodo();
+}
+
+let currentTodo = [];
 
 // Make an object that stores the todos
 let todos = [
@@ -154,6 +197,8 @@ function renderTodo() {
     editBtn.classList.add("edit-btn");
     deleteEditBtnContainer.appendChild(editBtn);
     editBtn.id = todo.id;
+
+    editBtn.addEventListener("click", () => editTodo(todo));
 
     const editBtnIcon = document.createElement("i");
     editBtnIcon.classList.add("fa-solid", "fa-pen-to-square");
