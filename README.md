@@ -10,6 +10,8 @@ Introducing a highly functional and user-friendly to-do list application, expert
 
 <img align="left" alt="CSS3" width="26px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" style="padding-right:10px;" />
 
+<br>
+
 ### Visit the App
 
 _Todo List App Live Link_
