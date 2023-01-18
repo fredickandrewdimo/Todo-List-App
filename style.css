@@ -175,7 +175,7 @@ body {
     cursor: pointer;
 }
 
-/* Modal */
+/* Modal of Creating a Todo */
 
 .modal-container {
     display: none;
@@ -299,7 +299,131 @@ body {
     cursor: pointer;
 }
 
-.save-changes-btn {
+/* Modal of editing a Todo*/
+
+.modal-container-edit {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content-edit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    margin: 40px 0 0 0;
+    background-color: white;
+    width: 50vw;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.modal-input-edit {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 20px 0;
+}
+
+.title-input-edit {
+    margin: 0 0 15px 0;
+    height: 24px;
+    padding: 10px;
+    border: 1px solid var(--primary-border);
+    border-radius: 5px;
+    font-size: 1.5rem;
+    color: var(--primary-text);
+}
+
+.description-input-edit {
+    margin: 0 0 15px 0;
+    height: 64px;
+    padding: 10px;
+    border: 1px solid var(--primary-border);
+    border-radius: 5px;
+    font-size: 1.5rem;
+    color: var(--primary-text);
+    resize: none;
+}
+
+.modal-details-edit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.due-date-container-edit {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--primary-border);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.due-date-container-edit label {
+    font-size: 1.2rem;
+    margin: 0 5px 0 0;
+    color: var(--primary-text);
+}
+
+
+.due-date-container-edit label:hover {
+    cursor: pointer;
+}
+
+.due-date-container-edit:hover {
+    border: 1px solid var(--primary-accent);
+    cursor: pointer;
+}
+
+
+.due-date-btn-edit::-webkit-calendar-picker-indicator {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px 0 0;
+    border: none;
+}
+
+.due-date-btn-edit::-webkit-calendar-picker-indicator:hover {
+    cursor: pointer;
+}
+
+.due-date-btn-edit::-webkit-datetime-edit {
+    display: none;
+}
+
+.cancel-btn-edit {
+    font-size: 1.4rem;
+    padding: 10px;
+    margin: 0 10px 0 0;
+    border-radius: 5px;
+    color: var(--secondary-text);
+}
+
+.cancel-btn-edit:hover {
+    cursor: pointer;
+}
+
+.add-task-btn-edit {
+    font-size: 1.4rem;
+    padding: 10px;
+    margin: 0 10px 0 0;
+    border-radius: 5px;
+    color: var(--secondary-accent);
+    background-color: var(--primary-accent);
+    font-weight: bold;
+}
+
+.add-task-btn-edit:hover {
+    cursor: pointer;
+}
+
+.save-changes-btn-edit {
     font-size: 1.4rem;
     padding: 10px;
     border-radius: 5px;
@@ -308,11 +432,9 @@ body {
     font-weight: bold;
 }
 
-.save-changes-btn:hover {
+.save-changes-btn-edit:hover {
     cursor: pointer;
 }
-
-/* Modal of editing */
 
 
 
@@ -332,6 +454,10 @@ body {
     .modal-content {
         width: 60vw;
     }
+
+    .modal-content-edit {
+        width: 60vw;
+    }
 }
 
 /* Media query for mobile devices */
@@ -341,6 +467,10 @@ body {
     }
 
     .modal-content {
+        width: 85vw;
+    }
+
+    .modal-content-edit {
         width: 85vw;
     }
 }

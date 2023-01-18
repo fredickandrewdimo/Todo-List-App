@@ -36,8 +36,9 @@
 
         </div>
 
+        <!-- Main List Container (DIV) -->
         <div class="main-list-container" id="main-list-container">
-            <div class="main-task-container" id="main-task-container">
+            <!-- <div class="main-task-container" id="main-task-container">
                 <input id="textbox-input" class="textbox-input" type="checkbox">
                 <div class="task-container" id="task-container">
                     <h4 id="task-title" class="task-title">Task 1 (Example)</h4>
@@ -58,19 +59,18 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
         </div>
-
-
-
     </div>
 
+    <!-- Modal for Create a Todo -->
     <div class="modal-container" id="modal-container">
         <div class="modal-content">
             <div id="modal-input" class="modal-input">
-                <input id="title-input" class="title-input" type="text" placeholder="Task name here...">
+                <input id="title-input" class="title-input" type="text" placeholder="Task name here..."
+                    autocomplete="off">
                 <textarea id="description-input" class="description-input" name="" id="" cols="30" rows="10"
-                    placeholder="Description..."></textarea>
+                    placeholder="Description..." here..."></textarea>
             </div>
             <div id="modal-details" class="modal-details">
                 <div class="due-date-container">
@@ -80,13 +80,32 @@
                 <div class="btn-container">
                     <button id="cancel-btn" class="cancel-btn">Cancel</button>
                     <button id="add-task-btn" class="add-task-btn">Add Task</button>
-                    <button id="save-changes-btn" class="save-changes-btn">Save Changes</button>
                 </div>
             </div>
         </div>
     </div>
 
-
+    <!-- Modal for Edit a Todo -->
+    <div class="modal-container-edit" id="modal-container-edit">
+        <div class="modal-content-edit">
+            <div id="modal-input-edit" class="modal-input-edit">
+                <input id="title-input-edit" class="title-input-edit" type="text" placeholder="Task name here..."
+                    autocomplete="off">
+                <textarea id="description-input-edit" class="description-input-edit" name="" id="" cols="30" rows="10"
+                    placeholder="Description..." here..."></textarea>
+            </div>
+            <div id="modal-details-edit" class="modal-details-edit">
+                <div class="due-date-container-edit">
+                    <input class="due-date-btn-edit" type="date" placeholder="Due date" id="due-date-input-edit">
+                    <label for="due-date-input-edit">Due date</label>
+                </div>
+                <div class="btn-container-edit">
+                    <button id="cancel-btn-edit" class="cancel-btn-edit">Cancel</button>
+                    <button id="save-changes-btn-edit" class="save-changes-btn-edit">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 

@@ -14,6 +14,7 @@ function dateToday() {
     "Friday",
     "Saturday",
   ];
+
   var months = [
     "January",
     "February",
@@ -34,26 +35,19 @@ function dateToday() {
 }
 dateToday();
 
-// Create Todo
-
-let modalContainer = document.getElementById("modal-container");
-
+// Create Todo Function
 function createTodo() {
   const newTaskBtn = document.getElementById("new-task-btn");
-
   newTaskBtn.addEventListener("click", function () {
     modalContainer.style.display = "block";
   });
+
+  let modalContainer = document.getElementById("modal-container");
 
   const cancelBtn = document.getElementById("cancel-btn");
   cancelBtn.addEventListener("click", function () {
     modalContainer.style.display = "none";
   });
-
-  const saveChangesBtn = document.getElementById("save-changes-btn");
-  saveChangesBtn.style.display = "none";
-
-  document.getElementById("add-task-btn").style.display = "inline";
 
   const addTaskBtn = document.getElementById("add-task-btn");
   addTaskBtn.addEventListener("click", function (event) {
@@ -64,46 +58,9 @@ function createTodo() {
 }
 createTodo();
 
-// Edited Todo Object
-let currentTodo = [];
-
-// Edit todo function
-function editTodo(todo) {
-  // declare current todo is equals to todo
-  currentTodo = todo;
-
-  // display the modal
-  modalContainer.style.display = "block";
-
-  document.getElementById("save-changes-btn").style.display = "inline";
-  document.getElementById("add-task-btn").style.display = "none";
-
-  document.getElementById("title-input").value = todo.title;
-  document.getElementById("description-input").value = todo.description;
-  document.getElementById("due-date-input").value = todo.dueDate;
-
-  document
-    .getElementById("save-changes-btn")
-    .addEventListener("click", function () {
-      currentTodo.title = document.getElementById("title-input").value;
-      currentTodo.description =
-        document.getElementById("description-input").value;
-      currentTodo.dueDate = document.getElementById("due-date-input").value;
-      let index = todos.findIndex((todo) => todo.id === currentTodo.id);
-      todos[index] = currentTodo;
-
-      modalContainer.style.display = "none";
-
-      renderTodo();
-    });
-
-  renderTodo();
-}
-
-// Make an object that stores the todos
+// Add Todo Function
 let todos = [];
 
-// Make a function that push the new todo
 function addTodo() {
   // Get the value to title
   const titleInput = document.getElementById("title-input");
@@ -133,11 +90,11 @@ function addTodo() {
   descriptionInput.value = "";
   dueDateInput.value = "";
 
-  // run render todo function to scope the variable
+  // run render todo function
   renderTodo();
 }
 
-// Make a function that renders the list
+// RenderTodo Function
 function renderTodo() {
   // Clear the main list contaioner so it won't repeat
   const mainListContainer = document.getElementById("main-list-container");
@@ -215,7 +172,7 @@ function renderTodo() {
     deleteBtn.classList.add("delete-btn");
     deleteEditBtnContainer.appendChild(deleteBtn);
     deleteBtn.id = todo.id;
-    deleteBtn.onclick = removeTodo;
+    deleteBtn.onclick = removeTodo; // RemoveTodo Function
 
     // Creates the delete button icon
     const deleteBtnIcon = document.createElement("i");
@@ -223,11 +180,9 @@ function renderTodo() {
     deleteBtn.appendChild(deleteBtnIcon);
   });
 }
-
-// Run the render function
 renderTodo();
 
-// Remove todo function
+// Remove Todo function
 function removeTodo() {
   // Gets the delete button
   const deleteBtn = document.getElementsByClassName("delete-btn");
@@ -245,4 +200,47 @@ function removeTodo() {
       renderTodo();
     });
   }
+}
+
+// Edit todo function
+let currentTodo = [];
+
+function editTodo(todo) {
+  // declare current todo is equals to todo
+  currentTodo = todo;
+
+  // display the modal for edit
+  const modalContainerEdit = document.getElementById("modal-container-edit");
+  modalContainerEdit.style.display = "block";
+
+  document.getElementById("title-input-edit").value = todo.title;
+  document.getElementById("description-input-edit").value = todo.description;
+  document.getElementById("due-date-input-edit").value = todo.dueDate;
+
+  document
+    .getElementById("save-changes-btn-edit")
+    .addEventListener("click", function () {
+      currentTodo.title = document.getElementById("title-input-edit").value;
+      currentTodo.description = document.getElementById(
+        "description-input-edit"
+      ).value;
+      currentTodo.dueDate = document.getElementById(
+        "due-date-input-edit"
+      ).value;
+
+      let index = todos.findIndex((todo) => todo.id === currentTodo.id);
+      todos[index] = currentTodo;
+
+      modalContainerEdit.style.display = "none";
+
+      renderTodo();
+    });
+
+  document
+    .getElementById("cancel-btn-edit")
+    .addEventListener("click", function () {
+      modalContainerEdit.style.display = "none";
+    });
+
+  renderTodo();
 }
