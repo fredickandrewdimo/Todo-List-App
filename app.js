@@ -111,6 +111,26 @@ function addTodo() {
   const dueDateInput = document.getElementById("due-date-input");
   const dueDate = dueDateInput.value;
 
+  // Error Validation
+
+  // // Check if the title input is empty
+  // if (!title) {
+  //   alert("Invalid input. Please enter a title.");
+  //   return;
+  // }
+
+  // // Check if the description input is empty
+  // if (!description) {
+  //   alert("Invalid input. Please enter a description.");
+  //   return;
+  // }
+
+  // // Check if the due date input is empty
+  // if (!dueDate) {
+  //   alert("Invalid input. Please enter a due date.");
+  //   return;
+  // }
+
   // Creates a unique ID for the new todo usig the current time
   const id = "" + new Date().getTime();
 
