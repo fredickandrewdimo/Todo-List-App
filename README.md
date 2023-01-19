@@ -17,7 +17,7 @@ Introducing a highly functional and user-friendly to-do list application, expert
 
 ### Visit the App
 
-_Todo List App Live Link_
+https://fredickandrewdimo.github.io/Todo-List-App/
 
 <br>
 
