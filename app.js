@@ -47,55 +47,44 @@ function getCurrentDate() {
 }
 getCurrentDate();
 
-// Create Todo Function
+// Create Todo Function //
+
+// Get the modal container
+let modalContainer = document.getElementById("modal-container");
+
 function createTodo() {
   // Get the new task button
   const newTaskBtn = document.getElementById("new-task-btn");
-
-  // Add a click event to the new task button
   newTaskBtn.addEventListener("click", openModal);
-
-  // Get the modal container
-  let modalContainer = document.getElementById("modal-container");
 
   // Get the cancel button
   const cancelBtn = document.getElementById("cancel-btn");
-
-  // Add a click event to the cancel button
   cancelBtn.addEventListener("click", closeModal);
 
   // Get the add task button
   const addTaskBtn = document.getElementById("add-task-btn");
-
-  // Add a click event to the add task button
-  addTaskBtn.addEventListener("click", addAndCloseModal);
-
-  // Functions used ↓
-
-  function openModal() {
-    // Show the modal
-    modalContainer.style.display = "block";
-  }
-
-  function closeModal() {
-    // Hide the modal
-    modalContainer.style.display = "none";
-  }
-
-  function addAndCloseModal() {
-    // Add the new to-do
-    addTodo();
-
-    // Close the modal
-    closeModal();
-
-    // Stop the click event from bubbling up to parent elements
-    event.stopPropagation();
-  }
+  addTaskBtn.addEventListener("click", addTask);
 }
+
+function openModal() {
+  // Show the modal
+  modalContainer.style.display = "block";
+}
+
+function closeModal() {
+  // Hide the modal
+  modalContainer.style.display = "none";
+}
+
+function addTask(event) {
+  addTodo();
+  modalContainer.style.display = "none";
+  event.stopPropagation();
+}
+
 createTodo();
 
-// Add Todo Function
+// Add Todo Function //
 let todos = [];
 
 function addTodo() {
@@ -111,26 +100,6 @@ function addTodo() {
   const dueDateInput = document.getElementById("due-date-input");
   const dueDate = dueDateInput.value;
 
-  // Error Validation
-
-  // // Check if the title input is empty
-  // if (!title) {
-  //   alert("Invalid input. Please enter a title.");
-  //   return;
-  // }
-
-  // // Check if the description input is empty
-  // if (!description) {
-  //   alert("Invalid input. Please enter a description.");
-  //   return;
-  // }
-
-  // // Check if the due date input is empty
-  // if (!dueDate) {
-  //   alert("Invalid input. Please enter a due date.");
-  //   return;
-  // }
-
   // Creates a unique ID for the new todo usig the current time
   const id = "" + new Date().getTime();
 
@@ -143,18 +112,16 @@ function addTodo() {
   });
 
   // Clear the inputs fields after the todo is added
-  function clearInputFields() {
-    titleInput.value = "";
-    descriptionInput.value = "";
-    dueDateInput.value = "";
-  }
-  clearInputFields();
+  titleInput.value = "";
+  descriptionInput.value = "";
+  dueDateInput.value = "";
 
   // Call the "renderTodo" function to update the list of todos on the page
   renderTodo();
 }
 
-// Render Todo Function
+// RenderTodo Function //
+
 function renderTodo() {
   // Clear the main list contaioner so it won't repeat
   const mainListContainer = document.getElementById("main-list-container");
@@ -220,7 +187,7 @@ function renderTodo() {
     editBtn.classList.add("edit-btn");
     deleteEditBtnContainer.appendChild(editBtn);
     editBtn.id = todo.id;
-    editBtn.addEventListener("click", editTodo);
+    editBtn.addEventListener("click", () => editTodo(todo));
 
     // Creates the Edit icon
     const editBtnIcon = document.createElement("i");
@@ -232,10 +199,7 @@ function renderTodo() {
     deleteBtn.classList.add("delete-btn");
     deleteEditBtnContainer.appendChild(deleteBtn);
     deleteBtn.id = todo.id;
-    deleteBtn.onclick = removeTodo; // RemoveTodo Function
-    deleteBtn.addEventListener("click", function () {
-      console.log("Deleted");
-    });
+    deleteBtn.addEventListener("click", () => removeTodo());
 
     // Creates the delete button icon
     const deleteBtnIcon = document.createElement("i");
@@ -244,6 +208,61 @@ function renderTodo() {
   });
 }
 renderTodo();
+
+// Edit todo function //
+
+let currentTodo = [];
+
+let modalContainerEdit = document.getElementById("modal-container-edit");
+
+function editTodo(todo) {
+  // declare current todo is equals to todo
+  currentTodo = todo;
+
+  // display the modal for edit
+  modalContainerEdit.style.display = "block";
+
+  // Fill the input fields with the current to-do's information
+  document.getElementById("title-input-edit").value = todo.title;
+  document.getElementById("description-input-edit").value = todo.description;
+  document.getElementById("due-date-input-edit").value = todo.dueDate;
+
+  // Add a click event to the save changes button
+  document
+    .getElementById("save-changes-btn-edit")
+    .addEventListener("click", saveChanges);
+
+  // Add a click event to the cancel button
+  document
+    .getElementById("cancel-btn-edit")
+    .addEventListener("click", closeModalEdit);
+
+  renderTodo();
+}
+
+function saveChanges() {
+  // Update the current to-do with the new information
+  currentTodo.title = document.getElementById("title-input-edit").value;
+  currentTodo.description = document.getElementById(
+    "description-input-edit"
+  ).value;
+  currentTodo.dueDate = document.getElementById("due-date-input-edit").value;
+
+  // Find the current to-do in the to-do list and update it
+  let index = todos.findIndex((todo) => todo.id === currentTodo.id);
+  todos[index] = currentTodo;
+
+  // Close the modal
+  closeModalEdit();
+
+  // Update the to-do list on the page
+  renderTodo();
+}
+
+function closeModalEdit() {
+  // Hide the modal
+  modalContainerEdit.style.display = "none";
+}
 
 // Remove Todo Function
 function removeTodo() {
@@ -270,60 +289,5 @@ function removeTodo() {
       // Update the to-do list on the page
       renderTodo();
     });
-  }
-}
-
-// Edit Todo Function
-
-let currentTodo = {};
-
-function editTodo(todo) {
-  // Save the current to-do that is being edited
-  currentTodo = todo;
-
-  // Show the edit modal
-  const modal = document.getElementById("modal-container-edit");
-  modal.style.display = "block";
-
-  // Fill the input fields with the current to-do's information
-  document.getElementById("title-input-edit").value = todo.title;
-  document.getElementById("description-input-edit").value = todo.description;
-  document.getElementById("due-date-input-edit").value = todo.dueDate;
-
-  // Add a click event to the save changes button
-  document
-    .getElementById("save-changes-btn-edit")
-    .addEventListener("click", saveChanges);
-
-  // Add a click event to the cancel button
-  document
-    .getElementById("cancel-btn-edit")
-    .addEventListener("click", closeModal);
-
-  // functions used ↓
-
-  function saveChanges() {
-    // Update the current to-do with the new information
-    currentTodo.title = document.getElementById("title-input-edit").value;
-    currentTodo.description = document.getElementById(
-      "description-input-edit"
-    ).value;
-    currentTodo.dueDate = document.getElementById("due-date-input-edit").value;
-
-    // Find the current to-do in the to-do list and update it
-    let index = todos.findIndex((todo) => todo.id === currentTodo.id);
-    todos[index] = currentTodo;
-
-    // Close the modal
-    closeModal();
-
-    // Update the to-do list on the page
-    renderTodo();
-  }
-
-  function closeModal() {
-    // Hide the modal
-    const modal = document.getElementById("modal-container-edit");
-    modal.style.display = "none";
   }
 }
